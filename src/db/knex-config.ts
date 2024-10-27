@@ -13,6 +13,6 @@ const knexConfig: Knex.Config = {
     },
 };
 
-const db: Knex = knex(knexConfig);
+const knexConnection: Knex = knex(knexConfig);
 
-export default db;
+export default knexConnection;
