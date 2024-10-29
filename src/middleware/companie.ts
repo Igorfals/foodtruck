@@ -1,5 +1,5 @@
 import { ControllerResponse } from '../interfaces/controller-response-interface'
-import { GetCompaniesController, AddCompanieController, UpdateCompanieController, DeleteCompanieController } from '../controllers/companies/index'
+import { GetCompaniesController, AddCompanieController, UpdateCompanieController, DeleteCompanieController } from '../controllers/companie/index'
 import { Request, Response } from 'express'
 
 const getController = new GetCompaniesController()
