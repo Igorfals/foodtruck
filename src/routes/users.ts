@@ -1,8 +1,12 @@
 import { Router } from 'express'
-const router = Router()
+import { UserMiddleware } from '../middleware/user'
 
-router.get('/', (req, res) => {
-  res.send('GET /user')
-})
-  
+const router = Router()
+const middleware = new UserMiddleware()
+
+router.get('/', middleware.getUser)
+router.post('/add', middleware.setUser)
+router.put('/update', middleware.updateUser)
+router.delete('/delete/:id', middleware.deleteUser)
+
 export default router
