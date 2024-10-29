@@ -14,8 +14,8 @@ export class UserMiddleware {
         res.status(dados.statusCode).send(dados.resposta)
     }
 
-    getUser = async (req: Request, res: Response) => {
-        const dados: ControllerResponse = await getController.getUser()
+    getUsers = async (req: Request, res: Response) => {
+        const dados: ControllerResponse = await getController.getUsers()
         res.status(dados.statusCode).send(dados.resposta)
     }
 

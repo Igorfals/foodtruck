@@ -4,7 +4,7 @@ import { UserMiddleware } from '../middleware/user'
 const router = Router()
 const middleware = new UserMiddleware()
 
-router.get('/', middleware.getUser)
+router.get('/', middleware.getUsers)
 router.post('/add', middleware.setUser)
 router.put('/update', middleware.updateUser)
 router.delete('/delete/:id', middleware.deleteUser)

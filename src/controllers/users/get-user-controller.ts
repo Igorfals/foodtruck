@@ -5,9 +5,9 @@ import { User } from '../../interfaces/user-interface'
 const userService = new UserService()
 
 export class GetUserController {
-    getUser = async (): Promise<ControllerResponse> => {
+    getUsers = async (): Promise<ControllerResponse> => {
         try {
-            const user: User = await userService.getUser()
+            const user: User = await userService.getUsers()
             return {
                 statusCode: 200,
                 resposta: {

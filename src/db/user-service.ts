@@ -14,7 +14,7 @@ export class UserService {
         return await knex('users').where('user_email', email).first()
     }
 
-    getUser = async (): Promise<User> => {
+    getUsers = async (): Promise<User> => {
         return await knex('users').select('users.*')
     }
 
