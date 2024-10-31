@@ -10,7 +10,7 @@ export class CategoryService {
         return await knex('categories').where('category_id', id).first()
     }
 
-    getCategories = async (): Promise<Category> => {
+    getCategories = async (): Promise<any> => {
         return await knex('categories').select('categories.*')
     }
 
