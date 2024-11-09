@@ -23,7 +23,9 @@ export class UpdateProductController {
                 category_id: request.category_id,
                 product_name: request.product_name,
                 product_price: request.product_price,
-                product_description: request.product_description
+                product_description: request.product_description,
+                image: request.image,
+                increments: JSON.stringify(request.increments)
             }
             await productService.updateProduct(updateProduct)
             const productReponse = await productService.findProductById(request.product_id)

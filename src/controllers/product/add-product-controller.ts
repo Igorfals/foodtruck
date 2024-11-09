@@ -7,7 +7,7 @@ const productService = new ProductService()
 export class AddProductController {
     setProduct = async (request): Promise<ControllerResponse> => {
         try {
-            const requireFields = ['category_id', 'product_name', 'product_price']
+            const requireFields = ['category_id', 'product_name', 'product_price', 'image']
             for (const field of requireFields) {
                 if (!(field in request)) {
                     return {
@@ -22,7 +22,9 @@ export class AddProductController {
                 category_id: request.category_id,
                 product_name: request.product_name,
                 product_price: request.product_price,
-                product_description: request.product_description
+                product_description: request.product_description,
+                image: request.image,
+                increments: JSON.stringify(request.increments)
             }
             const product = await productService.setProduct(addProduct)
             const productReponse = await productService.findProductById(product[0])
