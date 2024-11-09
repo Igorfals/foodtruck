@@ -10,7 +10,7 @@ export class ProductService {
         return await knex('products').where('product_id', id).first()
     }
 
-    getProducts = async (): Promise<Product> => {
+    getProducts = async (): Promise<Product[]> => {
         return await knex('products').select('products.*')
     }
 
