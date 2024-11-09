@@ -7,7 +7,7 @@ const productService = new ProductService()
 export class GetProductsController {
     getProducts = async (): Promise<ControllerResponse> => {
         try {
-            const products: Product = await productService.getProducts()
+            const products: Product[] = await productService.getProducts()
             return {
                 statusCode: 200,
                 resposta: {
