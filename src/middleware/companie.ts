@@ -14,8 +14,8 @@ export class CompanieMiddleware {
         res.status(dados.statusCode).send(dados.resposta)
     }
 
-    getCompanies = async (req: Request, res: Response) => {
-        const dados: ControllerResponse = await getController.getCompanies()
+    getCompanys = async (req: Request, res: Response) => {
+        const dados: ControllerResponse = await getController.getCompanys()
         res.status(dados.statusCode).send(dados.resposta)
     }
 

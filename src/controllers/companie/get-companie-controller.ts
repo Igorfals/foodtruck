@@ -5,13 +5,13 @@ import { Companie } from '../../interfaces/companie-interface'
 const companieServic = new CompanieService()
 
 export class GetCompaniesController {
-    getCompanies = async (): Promise<ControllerResponse> => {
+    getCompanys = async (): Promise<ControllerResponse> => {
         try {
-            const companie: Companie = await companieServic.getCompanies()
+            const companys: Companie = await companieServic.getCompanies()
             return {
                 statusCode: 200,
                 resposta: {
-                    companie
+                    companys
                 }
             }
         } catch (error) {
