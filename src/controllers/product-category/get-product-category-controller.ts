@@ -10,9 +10,6 @@ export class GetProductCategoryController {
         try {
             const categories = await categoryService.getCategories()
             const products = await productService.getProducts()
-            if (!Array.isArray(products)) {
-                throw new Error('Products should be an array')
-            }
             const categoriesWithProducts = categories.map(category => ({
                 ...category,
                 products: products.filter(product => product.category_id === category.category_id)
