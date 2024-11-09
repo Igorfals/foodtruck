@@ -7,11 +7,11 @@ const categoryService = new CategoryService()
 export class GetCategoriesController {
     getCategories = async (): Promise<ControllerResponse> => {
         try {
-            const category: Category = await categoryService.getCategories()
+            const categorys: Category = await categoryService.getCategories()
             return {
                 statusCode: 200,
                 resposta: {
-                    category
+                    categorys
                 }
             }
         } catch (error) {
