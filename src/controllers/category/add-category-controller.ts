@@ -7,7 +7,7 @@ const categoryService = new CategoryService()
 export class AddCategoryController {
     setCategory = async (request): Promise<ControllerResponse> => {
         try {
-            const requireFields = ['company_id', 'category_name']
+            const requireFields = ['company_id', 'category_name', 'icon']
             for (const field of requireFields) {
                 if (!(field in request)) {
                     return {
@@ -20,7 +20,8 @@ export class AddCategoryController {
             }
             const addCategory: Category = {
                 company_id: request.company_id,
-                category_name: request.category_name
+                category_name: request.category_name,
+                icon: request.icon
             }
             const category = await categoryService.setCategory(addCategory)
             const categoryReponse = await categoryService.findCategoryById(category[0])

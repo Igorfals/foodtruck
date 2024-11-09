@@ -21,7 +21,8 @@ export class UpdateCategoryController {
             const updateCategory: Category = {
                 category_id: request.category_id,
                 company_id: request.company_id,
-                category_name: request.category_name
+                category_name: request.category_name,
+                icon: request.icon
             }
             await categoryService.updateCategory(updateCategory)
             const categoryReponse = await categoryService.findCategoryById(request.category_id)
