@@ -1,3 +1,4 @@
+import { Filter } from '../interfaces/filter-interface'
 import { Product } from '../interfaces/product'
 import knex from './knex-config'
 
@@ -10,8 +11,27 @@ export class ProductService {
         return await knex('products').where('product_id', id).first()
     }
 
-    getProducts = async (): Promise<Product[]> => {
+    getProducts = async (request: Filter): Promise<Product[]> => {
+        const pesquisa: string = request.pesquisa
         return await knex('products').select('products.*')
+            .andWhere(function (): void {
+                if (pesquisa) {
+                    this.where('product_name', 'like', `%${pesquisa}%`)
+                }
+            })
+            .limit(request.limit || 10000).offset(request.offset || 0)
+            .orderBy('product_id', 'desc')
+    }
+
+    getProductsTotal = async (request: Filter): Promise<number> => {
+        const pesquisa: string = request.pesquisa
+        const result = await knex('products').count('product_id as total').first()
+            .andWhere(function (): void {
+                if (pesquisa) {
+                    this.where('product_name', 'like', `%${pesquisa}%`)
+                }
+            })
+        return Number(result.total)
     }
 
     updateProduct = async (obj: Product): Promise<number> => {

@@ -15,7 +15,8 @@ export class ProductMiddleware {
     }
 
     getProducts = async (req: Request, res: Response) => {
-        const dados: ControllerResponse = await getController.getProducts()
+        const request = req.query
+        const dados: ControllerResponse = await getController.getProducts(request)
         res.status(dados.statusCode).send(dados.resposta)
     }
 

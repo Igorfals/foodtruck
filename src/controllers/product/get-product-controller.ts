@@ -5,13 +5,15 @@ import { ProductService } from '../../db/product-service'
 const productService = new ProductService()
 
 export class GetProductsController {
-    getProducts = async (): Promise<ControllerResponse> => {
+    getProducts = async (request): Promise<ControllerResponse> => {
         try {
-            const products: Product[] = await productService.getProducts()
+            const products: Product[] = await productService.getProducts(request)
+            const total = await productService.getProductsTotal(request)
             return {
                 statusCode: 200,
                 resposta: {
-                    products
+                    products,
+                    total
                 }
             }
         } catch (error) {

@@ -6,7 +6,8 @@ const getController = new GetProductCategoryController()
 
 export class ProductCategoryMiddleware {
     getProductCategory = async (req: Request, res: Response) => {
-        const dados: ControllerResponse = await getController.getProductCategory()
+        const request = req.query
+        const dados: ControllerResponse = await getController.getProductCategory(request)
         res.status(dados.statusCode).send(dados.resposta)
     }
 }
