@@ -5,13 +5,15 @@ import { User } from '../../interfaces/user-interface'
 const userService = new UserService()
 
 export class GetUserController {
-    getUsers = async (): Promise<ControllerResponse> => {
+    getUsers = async (request): Promise<ControllerResponse> => {
         try {
-            const user: User = await userService.getUsers()
+            const users: User[] = await userService.getUsers(request)
+            const total = await userService.getUsersTotal(request)
             return {
                 statusCode: 200,
                 resposta: {
-                    user
+                    users,
+                    total
                 }
             }
         } catch (error) {
