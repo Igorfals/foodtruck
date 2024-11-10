@@ -6,10 +6,10 @@ const categoryService = new CategoryService()
 const productService = new ProductService()
 
 export class GetProductCategoryController {
-    getProductCategory = async (): Promise<ControllerResponse> => {
+    getProductCategory = async (request): Promise<ControllerResponse> => {
         try {
-            const categories = await categoryService.getCategories()
-            const products = await productService.getProducts()
+            const categories = await categoryService.getCategories(request)
+            const products = await productService.getProducts(request)
             const categoriesWithProducts = categories.map(category => ({
                 ...category,
                 products: products.filter(product => product.category_id === category.category_id)

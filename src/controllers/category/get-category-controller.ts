@@ -5,13 +5,15 @@ import { Category } from '../../interfaces/category-interface'
 const categoryService = new CategoryService()
 
 export class GetCategoriesController {
-    getCategories = async (): Promise<ControllerResponse> => {
+    getCategories = async (request): Promise<ControllerResponse> => {
         try {
-            const categorys: Category = await categoryService.getCategories()
+            const categorys: Category[] = await categoryService.getCategories(request)
+            const total = await categoryService.getCategoriesTotal(request)
             return {
                 statusCode: 200,
                 resposta: {
-                    categorys
+                    categorys,
+                    total
                 }
             }
         } catch (error) {

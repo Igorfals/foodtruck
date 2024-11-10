@@ -15,7 +15,8 @@ export class CategoryMiddleware {
     }
 
     getCategories = async (req: Request, res: Response) => {
-        const dados: ControllerResponse = await getController.getCategories()
+        const request = req.query
+        const dados: ControllerResponse = await getController.getCategories(request)
         res.status(dados.statusCode).send(dados.resposta)
     }
 
